@@ -12,9 +12,14 @@
 #include <time.h>
 #include "raylib.h"
 
+#define CIRCLE_WIDTH 20
+#define PADDING 20
+#define SCREEN_WIDTH PADDING + CIRCLE_WIDTH * 3 
+#define SCREEN_HEIGHT PADDING + CIRCLE_WIDTH * 6
 
-#define SCREEN_WIDTH 20 + 20 * 3 
-#define SCREEN_HEIGHT 20 + 20 * 6 
+
+// pos calculates position of each circle based on loop interation.
+// a = width of circle; i = iterator used as a multiplier of the width; p = the margin for spacing
 int pos(int a, int i, int p) { return (a * i) + p; }
 
 Color get_color( int timeblock, int i, int y) {
@@ -25,19 +30,16 @@ Color get_color( int timeblock, int i, int y) {
         }
 }
 int main(void) {
-  const int screenWidth = SCREEN_WIDTH;
-  const int screenHeight = SCREEN_HEIGHT;
 
   time_t t = time(NULL);
   struct tm tm = *localtime(&t);
 
   printf("now: %d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 
-  int x = 20;
-  int y = 20;
+  
   Color circle_color;
   
-  InitWindow(screenWidth, screenHeight, "Nota");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Nota");
 
   SetTargetFPS(2); 
 
