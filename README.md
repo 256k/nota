@@ -14,4 +14,4 @@ o o o
 *requires raylib*
 
 to run:
-`./build.sh && ./nota`
+`./build.sh && ./bin/nota`

@@ -40,6 +40,7 @@ int main(int argc, char* argv[]) {
   } else { 
     CIRCLE_RADIUS = 8;
   }
+
   int CIRCLE_WIDTH = ((CIRCLE_RADIUS * 2) + (CIRCLE_RADIUS / 2));
   int PADDING = CIRCLE_WIDTH;
   int SCREEN_WIDTH = (PADDING + CIRCLE_WIDTH * 3 );
