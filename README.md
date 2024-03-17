@@ -15,3 +15,8 @@ o o o
 
 to run:
 `./build.sh && ./bin/nota`
+
+NOTE: you can now optionally pass a circle radius value to nota to dynamically change circle width:
+`./bin/nota 24`
+
+(default circle width is 8)
