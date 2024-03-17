@@ -10,26 +10,40 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <stdlib.h>
 #include "raylib.h"
 
-#define CIRCLE_WIDTH 20
-#define PADDING 20
-#define SCREEN_WIDTH PADDING + CIRCLE_WIDTH * 3 
-#define SCREEN_HEIGHT PADDING + CIRCLE_WIDTH * 6
 
 
 // pos calculates position of each circle based on loop interation.
 // a = width of circle; i = iterator used as a multiplier of the width; p = the margin for spacing
-int pos(int a, int i, int p) { return (a * i) + p; }
+int pos(int a, int i, int p) { 
+  return (a * i) + p; 
+}
 
 Color get_color( int timeblock, int i, int y) {
+  
         if (timeblock & (int)pow(2,y)) {
           return BLACK;
         } else {
           return GRAY;
         }
 }
-int main(void) {
+
+int main(int argc, char* argv[]) {
+
+
+  int CIRCLE_RADIUS;
+
+  if (argc > 1) {
+    CIRCLE_RADIUS = atoi(argv[1]);
+  } else { 
+    CIRCLE_RADIUS = 8;
+  }
+  int CIRCLE_WIDTH = ((CIRCLE_RADIUS * 2) + (CIRCLE_RADIUS / 2));
+  int PADDING = CIRCLE_WIDTH;
+  int SCREEN_WIDTH = (PADDING + CIRCLE_WIDTH * 3 );
+  int SCREEN_HEIGHT  = (PADDING + CIRCLE_WIDTH * 6);
 
   time_t t = time(NULL);
   struct tm tm = *localtime(&t);
@@ -61,7 +75,7 @@ int main(void) {
 	case 2:
 	  circle_color = get_color(tm.tm_hour, i, y);
 	}
-        DrawCircle((SCREEN_WIDTH - pos(20, i, 20)),(SCREEN_HEIGHT - pos(20, y, 20)), 8, circle_color);
+        DrawCircle((SCREEN_WIDTH - pos(CIRCLE_WIDTH, i, PADDING)),(SCREEN_HEIGHT - pos(CIRCLE_WIDTH, y, PADDING)), CIRCLE_RADIUS, circle_color);
       }
     }
 
