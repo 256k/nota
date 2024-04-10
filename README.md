@@ -22,3 +22,5 @@ NOTE: you can now optionally pass a circle radius value to nota to dynamically c
 `./bin/nota 24`
 
 (default circle width is 8)
+
+hello from plan9
